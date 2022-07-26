@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './Navigation.css'
 import { MenuItems } from './MenuItem'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faSquareXmark, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { Button } from './Button'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const Navigation = () => {

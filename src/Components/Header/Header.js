@@ -1,11 +1,14 @@
 import React from 'react'
 import Navigation from './Navigation'
+import classes from './Header.module.css'
+import CartButton from '../Cart/CartButton'
 
 const Header = () => {
     return (
-        <React.Fragment>
+        <header className={`${classes.main_header}`} >
             <Navigation />
-        </React.Fragment>
+            <CartButton />
+        </header>
     )
 }
 

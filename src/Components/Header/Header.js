@@ -1,13 +1,13 @@
 import React from 'react'
 import Navigation from './Navigation'
 import classes from './Header.module.css'
-import CartButton from '../Cart/CartButton'
+import CartButton from './CartButton'
 
-const Header = () => {
+const Header = (props) => {
     return (
-        <header className={`${classes.main_header}`} >
+        <header style={{ zIndex: "10" }} className={`${classes.main_header}`} >
             <Navigation />
-            <CartButton />
+            <CartButton onShowCart={props.onShowCart} />
         </header>
     )
 }

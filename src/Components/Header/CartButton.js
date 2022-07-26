@@ -5,7 +5,7 @@ import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 const CartButton = (props) => {
     return (
-        <div className={`${classes.CartButton}`} >
+        <div onClick={props.onShowCart} className={`${classes.CartButton}`} >
             <div className="d-flex justify-content-center align-items-center" >
                 <span>
                     <FontAwesomeIcon icon={faCartArrowDown} />

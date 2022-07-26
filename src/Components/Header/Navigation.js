@@ -34,7 +34,7 @@ const Navigation = () => {
                         }
 
                     </ul>
-                    <button style={{ background: "#E39402" }} className="btn" >Sing Up</button>
+                    <button style={{ background: "#E39402" }} className="btn" >Login</button>
                 </nav>
             </div>
         </header>

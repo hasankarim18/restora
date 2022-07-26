@@ -1,30 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Body from './Body/Body'
 import Header from './Header/Header'
 import Meals from './Meals/Meals'
 import Cart from './Cart/Cart'
+import { Context } from '../Context/Context'
 
 const Main = (props) => {
 
-    const [cartIsShown, setCartIsShown] = useState(false)
-
-    const showCartHandler = () => {
-        setCartIsShown(true)
-    }
-
-    const hideCartHandler = () => {
-        setCartIsShown(false)
-    }
-
+    const ctx = useContext(Context)
 
     return (
         <div>
-            <Header onShowCart={showCartHandler} />
+            <Header />
             <Body />
             <main>
                 <Meals />
             </main>
-            {cartIsShown ? <Cart onHideCart={hideCartHandler} /> : null}
+            {ctx.cartIsShown ? <Cart /> : null}
 
         </div>
     )

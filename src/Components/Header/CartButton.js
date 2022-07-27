@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classes from './CartButton.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { CartContext } from '../../Store/CartContext'
 
 const CartButton = (props) => {
+
+    const ctx = useContext(CartContext)
+
+
     return (
-        <div className={`${classes.CartButton}`} >
+        <div onClick={ctx.onShowCart} className={`${classes.CartButton}`} >
             <div className="d-flex justify-content-center align-items-center" >
                 <span>
                     <FontAwesomeIcon icon={faCartArrowDown} />

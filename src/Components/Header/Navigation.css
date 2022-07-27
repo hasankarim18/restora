@@ -74,6 +74,7 @@
         left: 0;
         top: 80px;
         justify-content: start;
+        z-index: 12;
     }
 
     .nav-links {

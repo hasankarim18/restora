@@ -1,15 +1,12 @@
 import React from 'react'
 import CartForm from './CartForm'
 
-
-
-const Cart = () => {
+const AddItem = () => {
     return (
-        <>
+        <div>
             <CartForm />
-        </>
-
+        </div>
     )
 }
 
-export default Cart
+export default AddItem

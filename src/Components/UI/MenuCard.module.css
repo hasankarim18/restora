@@ -4,13 +4,18 @@
     border-radius: 10px;
     padding-top: 200px;
     position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }
+
+
 
 .imageBox {
     position: absolute;
     left: 0;
     width: 100%;
     top: 0;
+
 }
 
 .imageBox img {
@@ -20,6 +25,29 @@
     width: 100%;
     height: 200px;
     padding: 10px;
+    border-radius: 20px 20px 0 0;
+    cursor: pointer;
+}
+
+.viewDetails {
+    position: absolute;
+    left: 0;
+    top: -100px;
+    z-index: 99;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    color: black;
+    font-weight: 700;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+
+
+}
+
+.MenuCard:hover .viewDetails {
+    top: 10px;
 }
 
 .imageOverlay {}

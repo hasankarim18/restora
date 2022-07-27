@@ -1,21 +1,32 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { CartContext } from '../../Store/CartContext'
+import AddItem from '../Cart/AddItem'
+import Cart from '../Cart/Cart'
 import MenuCard from '../UI/MenuCard'
+import Modal from '../UI/Modal'
+import MealDetails from './MealDetails'
+
+
 
 
 const Meals = () => {
 
+
+
     const CartCtx = useContext(CartContext)
-    console.log(CartCtx)
 
     const showMenu = CartCtx.mealList.map(item => {
         return (
-            <li className="col-11 col-sm-6 col-md-4" key={item.id} >
+            <li className="col-11 col-sm-6 col-md-4 mb-3" key={item.id} >
                 <MenuCard
+                    onClick={CartCtx.showMealDetailHandler}
                     name={item.name}
-                    image={process.env.PUBLIC_URL + item.image}
+                    image={item.image}
                     alt="beef"
                 />
+                <div>
+                    <AddItem />
+                </div>
             </li>
         )
     })
@@ -28,6 +39,27 @@ const Meals = () => {
                     {showMenu}
                 </ul>
             </div>
+            {
+                CartCtx.showCart ?
+                    <Modal
+                        onClose={CartCtx.onHideCart}
+                    >
+                        <h1>Modal</h1>
+
+                    </Modal> : ''
+            }
+
+            {
+                CartCtx.showMealDetail ?
+                    <Modal
+                        onClose={CartCtx.hideMealDetailsHandler}
+                    >
+                        <MealDetails />
+                    </Modal>
+                    : null
+
+            }
+
         </div>
     )
 }

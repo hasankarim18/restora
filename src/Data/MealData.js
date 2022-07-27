@@ -5,7 +5,7 @@ export const MealData = [
         description: 'Finest fish and veggies',
         price: 22.99,
         type: 'Fish',
-        image: './assets/images/beef.jpg'
+        image: 'https://github.com/hasankarim18/restora/blob/context/assets/images/salmon.jpg?raw=true'
     },
     {
         id: 'm2',
@@ -13,7 +13,7 @@ export const MealData = [
         description: 'A organic beaf!',
         price: 16.5,
         type: 'meat',
-        image: './assets/images/beef.jpg'
+        image: 'https://github.com/hasankarim18/restora/blob/context/assets/images/beef.jpg?raw=true'
     },
     {
         id: 'm3',
@@ -21,7 +21,7 @@ export const MealData = [
         description: 'American, raw, meaty',
         price: 12.99,
         type: 'fast food',
-        image: './assets/images/beef.jpg'
+        image: 'https://github.com/hasankarim18/restora/blob/context/assets/images/bbq-burger.jpg?raw=true'
     },
     {
         id: 'm4',
@@ -29,6 +29,6 @@ export const MealData = [
         description: 'Healthy...and green...',
         price: 18.99,
         type: 'Vegan',
-        image: './assets/images/beef.jpg'
+        image: 'https://github.com/hasankarim18/restora/blob/context/assets/images/green-bowl.jpg?raw=true'
     },
 ];

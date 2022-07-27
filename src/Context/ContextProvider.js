@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import { Context } from './Context'
 
 export const ContextProvider = (props) => {
@@ -15,14 +15,26 @@ export const ContextProvider = (props) => {
     }
 
 
+    const addItemFromCartHandler = item => { }
+
+    const removeItemFromCartHandler = id => { }
+
+
+    const CartContext = {
+        items: [],
+        totalAmount: 0,
+        addItem: addItemFromCartHandler,
+        removeItem: removeItemFromCartHandler,
+        cartIsShown: cartIsShown,
+        onShowCart: showCartHandler,
+        onHideCart: hideCartHandler
+    }
+
+
 
     return (
         <Context.Provider
-            value={{
-                cartIsShown: cartIsShown,
-                onShowCart: showCartHandler,
-                onHideCart: hideCartHandler
-            }}
+            value={CartContext}
         >
             {props.children}
         </Context.Provider >

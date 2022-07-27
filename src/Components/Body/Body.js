@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Banner from './Banner'
 
 const Body = () => {
     return (
-        <div>Body</div>
+        <Fragment>
+            <Banner />
+        </Fragment>
     )
 }
 

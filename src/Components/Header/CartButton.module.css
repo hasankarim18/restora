@@ -9,6 +9,8 @@
     padding: 15px 25px;
     font-size: 20px;
     font-weight: 700;
+    cursor: pointer;
+    z-index: 999;
 }
 
 .cartNumber {

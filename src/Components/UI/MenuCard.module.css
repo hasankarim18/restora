@@ -1,0 +1,25 @@
+.MenuCard {
+    padding: 10px;
+    border: 1px solid salmon;
+    border-radius: 10px;
+    padding-top: 200px;
+    position: relative;
+}
+
+.imageBox {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+}
+
+.imageBox img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+}
+
+.imageOverlay {}

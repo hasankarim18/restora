@@ -1,12 +1,15 @@
 import React from 'react';
-import './App.css';
+
 import Main from './Components/Main';
+import { ContextProvider } from './Store/ContextProvider'
+
 
 function App() {
   return (
-    <React.Fragment>
+    <ContextProvider>
       <Main />
-    </React.Fragment>
+    </ContextProvider>
+
   );
 }
 

@@ -22,18 +22,13 @@ const cartReducer = (state, action) => {
             //  console.log(action.payload.id)
             const items = [...state.items]
 
-
             const existingCartItemIndex = items.findIndex(item => item.id === action.payload.id)
-
 
             const existingCartItem = items[existingCartItemIndex]
 
-
             let updatedItems = [];
 
-
             if (existingCartItem) {
-
                 let updatedItem = {
                     ...existingCartItem,
                     amount: existingCartItem.amount + action.payload.amount
@@ -52,7 +47,38 @@ const cartReducer = (state, action) => {
                 totalAmount: updatedTotalAmount
             }
         case 'REMOVE':
+            console.log('payload id', action.payload)
 
+
+
+            const currentItemIndex = state.items.findIndex(item => item.id === action.payload)
+            const currentItem = state.items[currentItemIndex]
+
+            const currentTotalAmout = state.totalAmount - currentItem.price
+
+            let updatedItemsAfterRemove;
+
+            if (currentItem.amount === 1) {
+                // we want to remove the item from the array
+                updatedItemsAfterRemove = state.items.filter(item => {
+                    return item.id !== action.payload
+                })
+            } else {
+                // if the amout is greater thant one 
+                const newAmount = {
+                    ...currentItem,
+                    amount: currentItem.amount - 1
+                }
+
+                updatedItemsAfterRemove = [...state.items]
+                updatedItemsAfterRemove[currentItemIndex] = newAmount
+
+            }
+
+            return {
+                items: updatedItemsAfterRemove,
+                totalAmount: currentTotalAmout
+            }
 
 
         default:

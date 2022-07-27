@@ -14,10 +14,13 @@ const Cart = (props) => {
     const hasItems = cartCtx.items.length > 0
 
     const cartItemRemoveHandler = (id) => {
-
+        //  console.log('remove id:', id)
+        cartCtx.removeItem(id)
     }
 
-    const cartItemAddHandler = item => { }
+    const cartItemAddHandler = item => {
+        cartCtx.addItem({ ...item, amount: 1 })
+    }
 
     const cartItems = cartCtx.items.map(item => {
         return <CartItem
@@ -25,8 +28,10 @@ const Cart = (props) => {
             name={item.name}
             amount={item.amount}
             price={item.price}
-            onRemove={cartItemRemoveHandler.bind(null, item.id)}
-            onAdd={cartItemAddHandler.bind(null, item)}
+            // onRemove={cartItemRemoveHandler.bind(null, item.id)}
+            onRemove={() => cartItemRemoveHandler(item.id)}
+            // onAdd={cartItemAddHandler.bind(null, item)}
+            onAdd={() => cartItemAddHandler(item)}
         />
         // bind preconfigures the function what it will receive
     })

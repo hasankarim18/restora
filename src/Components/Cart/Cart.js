@@ -6,7 +6,7 @@ import CartForm from './CartForm'
 const Cart = () => {
     return (
         <div>
-
+            Cart Detail
         </div>
 
     )

@@ -9,14 +9,13 @@ const cartDefaultState = {
 
 const cartReducer = (state, action) => {
     if (action.type === 'ADD') {
+        const newCartItem = action.payload
 
-        const items = action.payload
         return {
             ...state,
-            items: items,
+            items: state.items.concat(newCartItem),
             amount: action.payload.amount
         }
-
     }
     return state
 }
@@ -77,7 +76,7 @@ export const ContextProvider = (props) => {
                 selectedMealId: selectedMealId,
                 addItemHandler: addItemHandler,
                 removeItemHandler: removeItemHandler,
-                cartDefaultState: cartState
+                cartState: cartState
 
             }}
         >

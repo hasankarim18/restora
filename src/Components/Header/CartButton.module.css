@@ -1,0 +1,65 @@
+.CartButton {
+
+    background-color: #EB9609;
+    color: #fff;
+    border-radius: 35px;
+    padding: 15px 25px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 8;
+}
+
+.postionOnTop {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    transition: 0.3s ease;
+}
+
+.positionOnScroll {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    transition: 0.3s ease;
+}
+
+.cart {
+    transition: 0.3s ease-in-out;
+}
+
+.cartNumber {
+    display: flex;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: transparent;
+    border-radius: 100%;
+    background-color: antiquewhite;
+    color: rgb(78, 9, 55);
+    transition: 0.3s ease-in-out;
+}
+
+.CartButton:hover .cart {
+    color: greenyellow;
+}
+
+.CartButton:hover .cartNumber {
+    background-color: greenyellow;
+}
+
+.show {
+    position: relative;
+    transition: 0.5s ease;
+}
+
+.hide {
+    position: absolute;
+    right: -999px;
+    transition: 0.5s ease;
+    overflow: hidden;
+    width: 0px;
+}

@@ -1,0 +1,10 @@
+.bannerContent {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(12, 12, 12, 0.288);
+    padding: 40px 10px;
+    color: #fff;
+    text-align: center;
+}

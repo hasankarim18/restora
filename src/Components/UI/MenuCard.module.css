@@ -40,7 +40,7 @@
     width: 100%;
     color: black;
     font-weight: 700;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
     cursor: pointer;
 
 
@@ -51,3 +51,7 @@
 }
 
 .imageOverlay {}
+
+.price {
+    color: #EB9609;
+}

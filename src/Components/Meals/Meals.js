@@ -23,6 +23,7 @@ const Meals = () => {
                     name={item.name}
                     image={item.image}
                     alt="beef"
+                    price={item.price}
                 />
                 <div>
                     <AddItem />
@@ -35,6 +36,7 @@ const Meals = () => {
         <div>
             <div className="container pt-3">
                 <h1>Select Type</h1>
+
                 <ul style={{ listStyle: "none" }} className="row" >
                     {showMenu}
                 </ul>

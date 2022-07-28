@@ -35,7 +35,7 @@ const Modal = (props) => {
 
     return (
         <div className={classes.mainModal} >
-            {ReactDOM.createPortal(<Backdrop />, modalPoint)}
+            {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, modalPoint)}
             {ReactDOM.createPortal(<ModalContent onClose={props.onClose} > {props.children} </ModalContent>, modalPoint)}
         </div>
     )

@@ -13,7 +13,7 @@ const CartButton = (props) => {
         <div onClick={ctx.onShowCart} className={`${classes.CartButton}`} >
             <div className="d-flex justify-content-center align-items-center" >
                 <span>
-                    <FontAwesomeIcon icon={faCartArrowDown} />
+                    <FontAwesomeIcon className={classes.cart} icon={faCartArrowDown} />
                 </span>
 
                 <span className="ms-1 me-1" >

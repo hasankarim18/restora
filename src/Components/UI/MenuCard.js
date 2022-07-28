@@ -11,6 +11,9 @@ const MenuCard = (props) => {
                     <div className={classes.imageOverlay}></div>
                 </div>
                 <h5>{props.name}</h5>
+                <p className={classes.price} >
+                    <strong>Price: ${props.price}/-</strong>
+                </p>
             </div>
         </div>
     )

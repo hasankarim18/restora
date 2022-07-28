@@ -11,6 +11,7 @@ export const ContextProvider = (props) => {
 
     const [showCart, setShowCart] = useState(false)
     const [showMealDetail, setMhowMealDetail] = useState(false)
+    const [selectedMealId, setSelectedMealId] = useState('')
 
     const showCartHandler = () => {
         setShowCart(true)
@@ -20,8 +21,9 @@ export const ContextProvider = (props) => {
         setShowCart(false)
     }
 
-    const showMealDetailHandler = () => {
+    const showMealDetailHandler = (id) => {
         setMhowMealDetail(true)
+        setSelectedMealId(id)
     }
 
     const hideMealDetailsHandler = () => {
@@ -37,7 +39,8 @@ export const ContextProvider = (props) => {
                 showCart: showCart,
                 showMealDetailHandler: showMealDetailHandler,
                 hideMealDetailsHandler: hideMealDetailsHandler,
-                showMealDetail: showMealDetail
+                showMealDetail: showMealDetail,
+                selectedMealId: selectedMealId
             }}
         >
             {props.children}

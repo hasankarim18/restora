@@ -10,7 +10,7 @@ const Backdrop = (props) => {
 }
 
 const ModalContent = (props) => {
-    console.log(props)
+
     //   const classList = `${} row`
     return (
         <div className={classes.modalContent} >

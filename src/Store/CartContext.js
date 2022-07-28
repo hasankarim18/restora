@@ -10,5 +10,6 @@ export const CartContext = React.createContext({
     showCart: false,
     showMealDetail: false,
     hideMealDetailsHandler: () => { },
-    showMealDetailHandler: () => { }
+    showMealDetailHandler: () => { },
+    selectedMealId: ''
 })

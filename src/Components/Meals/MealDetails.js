@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../../Store/CartContext'
 
-const MealDetails = () => {
+
+const MealDetails = (props) => {
+
+    const CartCtx = useContext(CartContext)
+
+    const id = CartCtx.selectedMealId
+
+    const selectedMeal = CartCtx.mealList.filter(item => {
+        return item.id === id
+    })
+
+    console.log(selectedMeal[0])
     return (
-        <div>MealDetails</div>
+        <div className="text-dark" >
+            <h1>Meal Name: {selectedMeal[0].name} </h1>
+        </div>
     )
 }
 

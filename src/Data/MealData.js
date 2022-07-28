@@ -4,7 +4,7 @@ export const MealData = [
         name: 'Salmon',
         description: 'Finest fish and veggies',
         price: 22.99,
-        type: 'Fish',
+        type: 'fish',
         image: 'https://github.com/hasankarim18/restora/blob/context/assets/images/salmon.jpg?raw=true'
     },
     {
@@ -20,7 +20,7 @@ export const MealData = [
         name: 'Barbecue Burger',
         description: 'American, raw, meaty',
         price: 12.99,
-        type: 'fast food',
+        type: 'fastFood',
         image: 'https://github.com/hasankarim18/restora/blob/context/assets/images/bbq-burger.jpg?raw=true'
     },
     {
@@ -28,7 +28,7 @@ export const MealData = [
         name: 'Green Bowl',
         description: 'Healthy...and green...',
         price: 18.99,
-        type: 'Vegan',
+        type: 'vegan',
         image: 'https://github.com/hasankarim18/restora/blob/context/assets/images/green-bowl.jpg?raw=true'
     },
 ];

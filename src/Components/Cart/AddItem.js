@@ -1,10 +1,15 @@
 import React from 'react'
 import CartForm from './CartForm'
 
-const AddItem = () => {
+
+
+const AddItem = (props) => {
+
+    // console.log(props)
+
     return (
         <div>
-            <CartForm />
+            <CartForm addItem={props.addItem} />
         </div>
     )
 }

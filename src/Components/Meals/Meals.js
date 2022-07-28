@@ -1,10 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../../Store/CartContext'
-import AddItem from '../Cart/AddItem'
-import Cart from '../Cart/Cart'
-import MenuCard from '../UI/MenuCard'
 import Modal from '../UI/Modal'
-import MealDetails from './MealDetails'
+import MealItem from './MealItem'
 import MealTypeSelect from './MealTypeSelect'
 
 
@@ -27,6 +24,8 @@ const Meals = () => {
         }
     }
 
+
+
     return (
         <div>
             <div className="container pt-3">
@@ -37,27 +36,13 @@ const Meals = () => {
                     {
                         MenuItems.map(item => {
                             return (
-                                <li className="col-11 col-sm-6 col-md-4 mb-3" key={item.id} >
-                                    <MenuCard
-                                        onClick={() => CartCtx.showMealDetailHandler(item.id)}
-                                        name={item.name}
-                                        image={item.image}
-                                        alt="beef"
-                                        price={item.price}
-                                    />
-                                    <div>
-                                        <AddItem />
-                                    </div>
-                                    {
-                                        CartCtx.showMealDetail ?
-                                            <Modal
-                                                onClose={CartCtx.hideMealDetailsHandler}
-                                            >
-                                                <MealDetails />
-                                            </Modal>
-                                            : null
-                                    }
-                                </li>
+                                <MealItem
+                                    key={item.id}
+                                    name={item.name}
+                                    price={item.price}
+                                    image={item.image}
+                                    id={item.id}
+                                />
                             )
                         })
                     }

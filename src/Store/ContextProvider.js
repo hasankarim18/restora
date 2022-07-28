@@ -1,8 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import { CartContext } from "./CartContext";
 import { MealData } from '../Data/MealData'
 
+const cartDefaultState = {
+    items: [],
+    amount: 0
+}
 
+const cartReducer = (state, action) => {
+    if (action.type === 'ADD') {
+
+
+
+    }
+    return state
+}
 
 
 
@@ -12,6 +24,23 @@ export const ContextProvider = (props) => {
     const [showCart, setShowCart] = useState(false)
     const [showMealDetail, setMhowMealDetail] = useState(false)
     const [selectedMealId, setSelectedMealId] = useState('')
+
+    const [cartState, dispatchCartAction] = useReducer(cartReducer, cartDefaultState)
+
+    const addItemHandler = (item) => {
+        dispatchCartAction({
+            type: 'ADD',
+            payload: item
+        })
+    }
+
+    const removeItemHandler = id => {
+        dispatchCartAction({
+            type: 'REMOVE',
+            payload: id
+        })
+    }
+
 
     const showCartHandler = () => {
         setShowCart(true)
@@ -40,7 +69,10 @@ export const ContextProvider = (props) => {
                 showMealDetailHandler: showMealDetailHandler,
                 hideMealDetailsHandler: hideMealDetailsHandler,
                 showMealDetail: showMealDetail,
-                selectedMealId: selectedMealId
+                selectedMealId: selectedMealId,
+                addItemHandler: addItemHandler,
+                removeItemHandler: removeItemHandler
+
             }}
         >
             {props.children}

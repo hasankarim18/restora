@@ -9,7 +9,8 @@ const CartForm = (props) => {
 
     const submitHandler = event => {
         event.preventDefault()
-        console.log(amount)
+        // console.log(amount)
+        props.addItem(amount)
     }
 
     const inputChange = event => {

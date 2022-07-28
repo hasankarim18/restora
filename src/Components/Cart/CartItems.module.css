@@ -1,0 +1,23 @@
+.cartItems {
+    list-style-type: none;
+    border-bottom: 2px solid salmon;
+    margin-bottom: 20px;
+}
+
+.cartItems h4 {
+    color: salmon;
+}
+
+.action {
+    margin: 10px;
+    border: 1px solid salmon;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 400;
+    color: salmon;
+    border-radius: 4px;
+}

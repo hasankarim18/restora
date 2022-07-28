@@ -4,17 +4,22 @@ import { MealData } from '../Data/MealData'
 
 const cartDefaultState = {
     items: [],
-    amount: 0
+    amount: 0,
+    totalPrice: 0
 }
 
 const cartReducer = (state, action) => {
     if (action.type === 'ADD') {
+        const updatedPrice = state.totalPrice + action.payload.price * action.payload.amount
+        console.log(updatedPrice)
+
         const newCartItem = action.payload
 
         return {
             ...state,
             items: state.items.concat(newCartItem),
-            amount: action.payload.amount
+            amount: action.payload.amount,
+            totalPrice: updatedPrice
         }
     }
     return state

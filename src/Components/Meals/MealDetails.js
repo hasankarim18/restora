@@ -11,11 +11,22 @@ const MealDetails = (props) => {
     const selectedMeal = CartCtx.mealList.filter(item => {
         return item.id === id
     })
+    const { name, image, description, type, price } = selectedMeal[0]
 
-    console.log(selectedMeal[0])
     return (
         <div className="text-dark" >
-            <h1>Meal Name: {selectedMeal[0].name} </h1>
+            <h1>Meal Name: {name} </h1>
+            <img style={{ maxWidth: "100%" }} className="image-fluid" src={image} alt="" />
+            <div className="d-flex justify-content-between">
+                <span>{price}</span>
+                <span style={{ textTransform: "capitalize" }} >{type}</span>
+            </div>
+            <p>
+                {description}
+            </p>
+            <div className="text-end">
+                <button onClick={CartCtx.hideMealDetailsHandler} className="btn btn-warning" >Close</button>
+            </div>
         </div>
     )
 }

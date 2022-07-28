@@ -18,9 +18,9 @@ const ModalContent = (props) => {
                 <div className="col-11 col-sm-10 col-md-8">
                     <div className={classes.content}>
                         {props.children}
-                        <div className={classes.modalClose} >
+                        {/* <div className={classes.modalClose} >
                             <button onClick={props.onClose} >close</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

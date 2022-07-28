@@ -21,7 +21,6 @@ const MealItem = (props) => {
         }
         console.log(item)
         CartCtx.addItemHandler(item)
-
     }
 
     return (

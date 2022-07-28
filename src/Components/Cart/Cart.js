@@ -9,11 +9,12 @@ const Cart = () => {
 
     const { totalPrice } = CartCtx.cartState
 
+    console.log('amount', CartCtx.cartState.amount)
+    console.log('totalPrice', CartCtx.cartState.totalPrice)
 
+    // console.log(totalPrice.toFixed(2))
 
-    console.log(totalPrice.toFixed(2))
-
-    console.log(items)
+    //  console.log(items)
 
     return (
         <div>

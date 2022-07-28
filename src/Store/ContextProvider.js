@@ -11,18 +11,40 @@ const cartDefaultState = {
 const cartReducer = (state, action) => {
     if (action.type === 'ADD') {
         const updatedPrice = state.totalPrice + action.payload.price * action.payload.amount
-        console.log(updatedPrice)
+        const items = state.items
 
+        //   console.log(updatedPrice)
+        const existingCartIndex = items.findIndex(item => {
+            return item.id === action.payload.id
+        })
+
+        const existingCartItem = items[existingCartIndex]
+        console.log(existingCartItem)
+        let updatedItems = []
         const newCartItem = action.payload
+
+        if (existingCartItem) {
+            const updateItem = {
+                ...existingCartItem,
+                amount: existingCartItem.amount + action.payload.amount
+            }
+
+            updatedItems = [...state.items]
+            updatedItems[existingCartIndex] = updateItem
+
+        } else {
+            updatedItems = state.items.concat(action.payload)
+        }
 
         return {
             ...state,
-            items: state.items.concat(newCartItem),
+            items: updatedItems,
             amount: action.payload.amount,
             totalPrice: updatedPrice
         }
+
     }
-    return state
+
 }
 
 
@@ -56,7 +78,7 @@ export const ContextProvider = (props) => {
     }
 
     const hideCartHandler = () => {
-        console.log('hide cart')
+
         setShowCart(false)
     }
 

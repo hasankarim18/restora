@@ -51,6 +51,7 @@ export const ContextProvider = (props) => {
     }
 
     const hideCartHandler = () => {
+        console.log('hide cart')
         setShowCart(false)
     }
 
@@ -60,6 +61,7 @@ export const ContextProvider = (props) => {
     }
 
     const hideMealDetailsHandler = () => {
+        //  console.log('hide meal detail')
         setMhowMealDetail(false)
     }
 

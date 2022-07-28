@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../../Store/CartContext'
-import Modal from '../UI/Modal'
 import MealItem from './MealItem'
+import Modal from '../UI/Modal'
+import Cart from '../Cart/Cart'
 import MealTypeSelect from './MealTypeSelect'
-
-
-
 
 const Meals = () => {
     const CartCtx = useContext(CartContext)
@@ -23,7 +21,6 @@ const Meals = () => {
             setMenuItems(filterMenu)
         }
     }
-
 
 
     return (
@@ -49,23 +46,20 @@ const Meals = () => {
                 </ul>
             </div>
 
-
-
-
-
-
             {
-                CartCtx.showCart ?
-                    <Modal
-                        onClose={CartCtx.onHideCart}
-                    >
-                        <h1>Modal</h1>
-
-                    </Modal> : ''
+                // CartCtx.showCart ?
+                //     <Modal
+                //         className="text-dark"
+                //         onClose={CartCtx.onHideCart}
+                //     >
+                //         <div className="text-dark">
+                //             <Cart />
+                //             <div>
+                //                 <button onClick={CartCtx.onHideCart} className="btn btn-warning">Close</button>
+                //             </div>
+                //         </div>
+                //     </Modal> : ''
             }
-
-
-
         </div>
     )
 }

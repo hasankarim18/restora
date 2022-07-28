@@ -7,7 +7,7 @@ export const CartContext = React.createContext({
     mealList: [],
     onShowCart: () => { },
     onHideCart: () => { },
-    showCart: false,
+    showCart: '',
     showMealDetail: false,
     hideMealDetailsHandler: () => { },
     showMealDetailHandler: () => { },

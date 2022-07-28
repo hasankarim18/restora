@@ -3,6 +3,8 @@ import classes from './CartButton.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { CartContext } from '../../Store/CartContext'
+import Modal from '../UI/Modal'
+import Cart from '../Cart/Cart'
 
 const CartButton = (props) => {
     const [scroll, setScroll] = useState(false)
@@ -32,7 +34,7 @@ const CartButton = (props) => {
 
     }, [])
 
-    // console.log(showtext)
+
     return (
         <div onClick={CartCtx.onShowCart} className={`${classes.CartButton} ${scroll ? classes.positionOnScroll : classes.postionOnTop}`} >
             <div className="d-flex justify-content-center align-items-center" >
@@ -49,6 +51,8 @@ const CartButton = (props) => {
                     </span>
                 </span>
             </div>
+
+
         </div>
     )
 }

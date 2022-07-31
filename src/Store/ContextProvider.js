@@ -19,9 +19,8 @@ const cartReducer = (state, action) => {
         })
 
         const existingCartItem = items[existingCartIndex]
-        console.log(existingCartItem)
+
         let updatedItems = []
-        const newCartItem = action.payload
 
         if (existingCartItem) {
             const updateItem = {
@@ -42,6 +41,44 @@ const cartReducer = (state, action) => {
             amount: action.payload.amount,
             totalPrice: updatedPrice
         }
+
+    }
+
+
+    if (action.type === 'REMOVE') {
+        console.log('payload id', action.payload)
+
+        const currentItemIndex = state.items.findIndex(item => item.id === action.payload)
+        const currentItem = state.items[currentItemIndex]
+
+        const currentTotalAmout = state.totalPrice - currentItem.price
+
+        let updatedItemsAfterRemove;
+
+        if (currentItem.amount === 1) {
+            // we want to remove the item from the array
+            updatedItemsAfterRemove = state.items.filter(item => {
+                return item.id !== action.payload
+            })
+        } else {
+            // if the amout is greater thant one 
+            const newAmount = {
+                ...currentItem,
+                amount: currentItem.amount - 1,
+
+            }
+
+            updatedItemsAfterRemove = [...state.items]
+            updatedItemsAfterRemove[currentItemIndex] = newAmount
+
+        }
+
+        return {
+            items: updatedItemsAfterRemove,
+            totalPrice: currentTotalAmout,
+
+        }
+
 
     }
 
@@ -92,6 +129,9 @@ export const ContextProvider = (props) => {
         setMhowMealDetail(false)
     }
 
+    // item add from cart
+
+
     return (
         <CartContext.Provider
             value={{
@@ -105,7 +145,9 @@ export const ContextProvider = (props) => {
                 selectedMealId: selectedMealId,
                 addItemHandler: addItemHandler,
                 removeItemHandler: removeItemHandler,
-                cartState: cartState
+                cartState: cartState,
+                items: cartState.items
+
 
             }}
         >

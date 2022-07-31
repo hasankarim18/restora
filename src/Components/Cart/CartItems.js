@@ -24,8 +24,8 @@ const CartItems = (props) => {
                 <div className="col-6">
                     <div className="">
                         <div className="d-flex justify-content-end align-items-center">
-                            <span className={classes.action} >-</span>
-                            <span className={classes.action} >+</span>
+                            <span onClick={props.removeItem} className={classes.action} >-</span>
+                            <span onClick={props.addItem} className={classes.action} >+</span>
                         </div>
                         <div style={{ marginRight: "10px" }} className="d-flex justify-content-end align-items-center">
                             <span >{Subtotal} </span>

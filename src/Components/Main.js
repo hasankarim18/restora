@@ -17,20 +17,7 @@ const Main = () => {
             <Header />
             <Body />
             <Meals />
-            {
-                CartCtx.showCart ?
-                    <Modal
-                        className="text-dark"
-                        onClose={CartCtx.onHideCart}
-                    >
-                        <div className="text-dark">
-                            <Cart />
-                            <div>
-                                <button onClick={CartCtx.onHideCart} className="btn btn-warning">Close</button>
-                            </div>
-                        </div>
-                    </Modal> : ''
-            }
+
         </div>
     )
 }

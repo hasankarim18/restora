@@ -7,14 +7,14 @@ import Modal from '../UI/Modal'
 import Cart from '../Cart/Cart'
 
 const CartButton = (props) => {
+    const [cartBtnHighlight, setCartBtnHighlight] = useState(false)
     const [scroll, setScroll] = useState(false)
     const [showtext, setShowText] = useState(true)
     const CartCtx = useContext(CartContext)
 
-    const { items } = CartCtx.cartState
 
     // console.log(items)
-    const numberOfCartItem = items.reduce((currentNumber, item) => {
+    const numberOfCartItem = CartCtx.items.reduce((currentNumber, item) => {
         return currentNumber + item.amount
     }, 0)
 
@@ -29,14 +29,30 @@ const CartButton = (props) => {
             } else {
                 setShowText(true)
             }
-
         })
 
     }, [])
 
+    useEffect(() => {
+        if (CartCtx.items.length === 0) {
+            return
+        }
+
+        setCartBtnHighlight(true)
+
+        const timer = setTimeout(() => {
+            setCartBtnHighlight(false)
+        }, 300);
+
+        return () => {
+            clearTimeout(timer)
+        }
+
+    }, [CartCtx.items])
+
 
     return (
-        <div onClick={CartCtx.onShowCart} className={`${classes.CartButton} ${scroll ? classes.positionOnScroll : classes.postionOnTop}`} >
+        <div onClick={CartCtx.onShowCart} className={`${classes.CartButton} ${scroll ? classes.positionOnScroll : classes.postionOnTop} ${cartBtnHighlight ? classes.bump : ''}`} >
             <div className="d-flex justify-content-center align-items-center" >
                 <span>
                     <FontAwesomeIcon className={classes.cart} icon={faCartArrowDown} />

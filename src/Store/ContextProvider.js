@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState, useReducer, useEffect } from 'react'
 import { CartContext } from "./CartContext";
 import { MealData } from '../Data/MealData'
 
@@ -84,7 +84,16 @@ const cartReducer = (state, action) => {
 
 }
 
+const mealState = {
+    mealList: [],
+    isMealLoading: true,
+    mealLoaded: false
 
+}
+
+const mealReducer = (state, action) => {
+    return state
+}
 
 
 export const ContextProvider = (props) => {
@@ -92,6 +101,11 @@ export const ContextProvider = (props) => {
     const [showCart, setShowCart] = useState(false)
     const [showMealDetail, setMhowMealDetail] = useState(false)
     const [selectedMealId, setSelectedMealId] = useState('')
+
+    /// meal related 
+    const [mealLoad, setMealLoad] = useState(false)
+    const [meals, mealDispatch] = useReducer(mealReducer, mealState)
+
 
     const [cartState, dispatchCartAction] = useReducer(cartReducer, cartDefaultState)
 
@@ -130,12 +144,41 @@ export const ContextProvider = (props) => {
     }
 
     // item add from cart
+    const mealList = []
+
+    const getMealData = () => {
+        const url = 'https://projects-a1e23-default-rtdb.firebaseio.com/restora-meal-list.json'
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data)
+                setMealLoad(true)
+                for (const key in data) {
+                    mealList.push({
+                        id: key,
+                        name: data[key].name,
+                        price: data[key].price,
+                        type: data[key].type,
+                        image: data[key].image
+                    })
+                }
+
+            })
+
+    }
+    useEffect(() => {
+        //  console.log('mealdata', MealData)
+        getMealData()
+        console.log('mealList', mealList)
+    }, [])
+
 
 
     return (
         <CartContext.Provider
             value={{
-                mealList: MealData,
+                mealList: mealList,
                 onShowCart: showCartHandler,
                 onHideCart: hideCartHandler,
                 showCart: showCart,

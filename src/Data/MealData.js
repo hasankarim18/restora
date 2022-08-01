@@ -5,7 +5,7 @@ export const MealData = [
         description: 'Finest fish and veggies',
         price: 22.99,
         type: 'fish',
-        image: 'https://github.com/hasankarim18/restora/blob/master/assets/images/salmon.jpg?raw=true'
+        image: 'https://github.com/hasankarim18/restora/blob/master/assets/images/bbq-burger.jpg?raw=true'
     },
     {
         id: 'm2',

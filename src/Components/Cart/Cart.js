@@ -14,7 +14,7 @@ const Cart = () => {
 
     // console.log(totalPrice.toFixed(2))
 
-    console.log(items)
+    // console.log(items)
     const addToCartHandler = item => {
         CartCtx.addItemHandler({ ...item, amount: 1 })
     }
@@ -25,7 +25,6 @@ const Cart = () => {
 
     return (
         <div>
-            <button onClick={() => removeFromCartHandler(12)} >click</button>
             <ul>
                 {
                     items.map(item => {

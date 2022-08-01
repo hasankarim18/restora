@@ -11,9 +11,9 @@ const MealDetails = (props) => {
     const selectedMeal = CartCtx.mealList.filter(item => {
         return item.id === id
     })
-    console.log(CartCtx.mealList)
-    const { name, image, description, type, price } = selectedMeal
-
+    //  console.log(CartCtx.mealList)
+    const { name, image, description, type, price } = selectedMeal[0]
+    console.log(selectedMeal)
     return (
         <div className="text-dark" >
             <h1>Meal Name: {name} </h1>

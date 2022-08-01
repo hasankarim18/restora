@@ -92,6 +92,36 @@ const mealState = {
 }
 
 const mealReducer = (state, action) => {
+
+    if (action.type === 'GET_MEAL') {
+        const data = action.payload;
+        let list = []
+
+        for (const key in data) {
+            list.push({
+                id: key,
+                name: data[key].name,
+                price: data[key].price,
+                type: data[key].type,
+                image: data[key].image
+            })
+        }
+
+        return {
+            ...state,
+            mealList: list,
+            isMealLoading: false,
+            mealLoad: true
+        }
+
+    }
+
+    if (action.type === 'MEAL_LOADING') {
+        return {
+            ...state,
+            isMealLoading: action.payload,
+        }
+    }
     return state
 }
 
@@ -144,33 +174,37 @@ export const ContextProvider = (props) => {
     }
 
     // item add from cart
-    const mealList = []
+    const mealLoading = (status) => {
+        mealDispatch({
+            type: 'MEAL_LOADING',
+            payload: status
+        })
+    }
 
     const getMealData = () => {
+        mealLoading(true)
         const url = 'https://projects-a1e23-default-rtdb.firebaseio.com/restora-meal-list.json'
 
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 // console.log(data)
+                mealDispatch({
+                    type: 'GET_MEAL',
+                    payload: data
+                })
                 setMealLoad(true)
-                for (const key in data) {
-                    mealList.push({
-                        id: key,
-                        name: data[key].name,
-                        price: data[key].price,
-                        type: data[key].type,
-                        image: data[key].image
-                    })
-                }
-
+                mealLoading(false)
             })
 
     }
+
+
     useEffect(() => {
         //  console.log('mealdata', MealData)
         getMealData()
-        console.log('mealList', mealList)
+        //  console.log('mealList', meals.mealList)
+
     }, [])
 
 
@@ -178,7 +212,8 @@ export const ContextProvider = (props) => {
     return (
         <CartContext.Provider
             value={{
-                mealList: mealList,
+                mealList: meals.mealList,
+                isMealLoading: meals.isMealLoading,
                 onShowCart: showCartHandler,
                 onHideCart: hideCartHandler,
                 showCart: showCart,
@@ -190,8 +225,6 @@ export const ContextProvider = (props) => {
                 removeItemHandler: removeItemHandler,
                 cartState: cartState,
                 items: cartState.items
-
-
             }}
         >
             {props.children}

@@ -1,17 +1,23 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { CartContext } from '../../Store/CartContext'
 import MealItem from './MealItem'
 import Modal from '../UI/Modal'
 import Cart from '../Cart/Cart'
 import MealTypeSelect from './MealTypeSelect'
 
-const Meals = () => {
+const Meals = (props) => {
     const CartCtx = useContext(CartContext)
-    const [MenuItems, setMenuItems] = useState(CartCtx.mealList)
+    // const [MenuItems, setMenuItems] = useState(CartCtx.mealList)
+    const [MenuItems, setMenuItems] = useState([])
+    const isMealLoading = CartCtx.isMealLoading
+    const [showFilter, setShowFilter] = useState(false)
 
+    const handleShowFilter = () => {
+
+    }
 
     const filter = (type) => {
-
+        setShowFilter(true)
         if (type === 'all') {
             setMenuItems(CartCtx.mealList)
         } else {
@@ -22,6 +28,33 @@ const Meals = () => {
         }
     }
 
+    let showMeal = null
+
+    if (showFilter === false) {
+        showMeal = props.meals.map(item => {
+            return (
+                <MealItem
+                    key={item.id}
+                    name={item.name}
+                    price={item.price}
+                    image={item.image}
+                    id={item.id}
+                />
+            )
+        })
+    } else if (showFilter === true) {
+        showMeal = MenuItems.map(item => {
+            return (
+                <MealItem
+                    key={item.id}
+                    name={item.name}
+                    price={item.price}
+                    image={item.image}
+                    id={item.id}
+                />
+            )
+        })
+    }
 
     return (
         <div>
@@ -29,20 +62,12 @@ const Meals = () => {
                 <h1>Select Type</h1>
                 <MealTypeSelect filter={filter} />
 
+                {
+                    isMealLoading ? <h1>Loading ...</h1> : ''
+                }
+
                 <ul style={{ listStyle: "none" }} className="row" >
-                    {
-                        MenuItems.map(item => {
-                            return (
-                                <MealItem
-                                    key={item.id}
-                                    name={item.name}
-                                    price={item.price}
-                                    image={item.image}
-                                    id={item.id}
-                                />
-                            )
-                        })
-                    }
+                    {showMeal}
                 </ul>
             </div>
 

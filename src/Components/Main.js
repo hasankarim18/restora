@@ -11,12 +11,14 @@ const Main = () => {
 
     const CartCtx = useContext(CartContext)
 
+    const meals = CartCtx.mealList
+    // console.log(meals)
 
     return (
         <div>
             <Header />
             <Body />
-            <Meals />
+            <Meals meals={meals} />
 
         </div>
     )

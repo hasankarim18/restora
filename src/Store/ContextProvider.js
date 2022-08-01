@@ -1,6 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react'
 import { CartContext } from "./CartContext";
 import { MealData } from '../Data/MealData'
+import { url } from './url'
 
 const cartDefaultState = {
     items: [],
@@ -183,9 +184,9 @@ export const ContextProvider = (props) => {
 
     const getMealData = () => {
         mealLoading(true)
-        const url = 'https://projects-a1e23-default-rtdb.firebaseio.com/restora-meal-list.json'
+        const link = url + 'restora-meal-list.json'
 
-        fetch(url)
+        fetch(link)
             .then(response => response.json())
             .then(data => {
                 // console.log(data)

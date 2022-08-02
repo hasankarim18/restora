@@ -126,6 +126,14 @@ const mealReducer = (state, action) => {
     return state
 }
 
+const displayMenuState = {
+    mode: true
+}
+
+const displyMenuReducer = (state, action) => {
+    return state
+}
+
 
 export const ContextProvider = (props) => {
 
@@ -136,6 +144,9 @@ export const ContextProvider = (props) => {
     /// meal related 
     const [mealLoad, setMealLoad] = useState(false)
     const [meals, mealDispatch] = useReducer(mealReducer, mealState)
+
+    // dispaly menu 
+    const [displayMenu, setDisplayMenu] = useReducer(displyMenuReducer, displayMenuState)
 
 
     const [cartState, dispatchCartAction] = useReducer(cartReducer, cartDefaultState)
@@ -200,6 +211,10 @@ export const ContextProvider = (props) => {
 
     }
 
+    const displyMenuHandler = () => {
+
+    }
+
 
     useEffect(() => {
         //  console.log('mealdata', MealData)
@@ -225,7 +240,8 @@ export const ContextProvider = (props) => {
                 addItemHandler: addItemHandler,
                 removeItemHandler: removeItemHandler,
                 cartState: cartState,
-                items: cartState.items
+                items: cartState.items,
+                displyMenuHandler: displyMenuHandler
             }}
         >
             {props.children}

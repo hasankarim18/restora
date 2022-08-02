@@ -4,6 +4,7 @@ import AddItem from '../Cart/AddItem'
 import { CartContext } from '../../Store/CartContext'
 import Modal from '../UI/Modal'
 import MealDetails from './MealDetails'
+import { Transition } from 'react-transition-group'
 
 
 
@@ -23,30 +24,51 @@ const MealItem = (props) => {
         CartCtx.addItemHandler(item)
     }
 
-    return (
-        <li className="col-11 col-sm-6 col-md-4 mb-3" key={props.id} >
-            <MenuCard
-                onClick={() => CartCtx.showMealDetailHandler(props.id)}
-                name={props.name}
-                image={props.image}
-                alt="beef"
-                price={props.price}
-            />
-            <div>
-                <AddItem addItem={addItem} />
-            </div>
+    const transitionStyle = {
+        entering: { opacity: 0 },
+        entered: { opacity: 1 },
+        exiting: { opacity: 0 },
+        exited: { opacity: 1 }
+    }
 
-            {/* dish DEtail */}
-            {
-                CartCtx.showMealDetail ?
-                    <Modal
-                        onClose={CartCtx.hideMealDetailsHandler}
+    return (
+        <Transition in={true} timeout={1000} >
+            {state => {
+
+                return (
+                    <li className="col-11 col-sm-6 col-md-4 mb-3" key={props.id}
+                        style={{
+                            ...transitionStyle[state],
+                            transition: `opacity 1s ease-in-out`
+                        }}
                     >
-                        <MealDetails />
-                    </Modal>
-                    : null
-            }
-        </li>
+                        <h5>{state}</h5>
+                        <MenuCard
+                            onClick={() => CartCtx.showMealDetailHandler(props.id)}
+                            name={props.name}
+                            image={props.image}
+                            alt="beef"
+                            price={props.price}
+                        />
+                        <div>
+                            <AddItem addItem={addItem} />
+                        </div>
+
+                        {/* dish DEtail */}
+                        {
+                            CartCtx.showMealDetail ?
+                                <Modal
+                                    onClose={CartCtx.hideMealDetailsHandler}
+                                >
+                                    <MealDetails />
+                                </Modal>
+                                : null
+                        }
+                    </li>
+                )
+            }}
+
+        </Transition>
     )
 }
 

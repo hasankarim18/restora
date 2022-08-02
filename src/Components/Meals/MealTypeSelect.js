@@ -7,9 +7,11 @@ const MealTypeSelect = (props) => {
 
     const ctx = useContext(CartContext)
 
+    const changeDisplayMenu = ctx.displyMenuHandler
 
+    const mode = ctx.displayMenuToggle
 
-    //   const [mode, setMode] = useState(ctx.menuDisplyaMode)
+    console.log(mode)
 
     // console.log(mode)
 
@@ -25,6 +27,7 @@ const MealTypeSelect = (props) => {
     const onClickHandler = (label) => {
         //setMode(!mode)
         props.filter(label)
+        changeDisplayMenu()
     }
 
 

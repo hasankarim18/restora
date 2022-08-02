@@ -4,6 +4,7 @@ import MealItem from './MealItem'
 import Modal from '../UI/Modal'
 import Cart from '../Cart/Cart'
 import MealTypeSelect from './MealTypeSelect'
+import { motion } from 'framer-motion'
 
 const Meals = (props) => {
     const CartCtx = useContext(CartContext)
@@ -29,6 +30,8 @@ const Meals = (props) => {
     }
 
     let showMeal = null
+
+
 
     if (showFilter === false) {
         showMeal = props.meals.map(item => {
@@ -66,9 +69,9 @@ const Meals = (props) => {
                     isMealLoading ? <h1>Loading ...</h1> : ''
                 }
 
-                <ul style={{ listStyle: "none" }} className="row" >
+                <motion.div layout style={{ listStyle: "none" }} className="row" >
                     {showMeal}
-                </ul>
+                </motion.div>
             </div>
 
             {

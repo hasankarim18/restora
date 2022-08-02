@@ -16,8 +16,7 @@ export const CartContext = React.createContext({
     removeItemHandler: () => { },
     cartState: {},
     items: '',
-    displyMenuHandler: () => { },
-    displayMenuToggle: ''
+
 
 
 })

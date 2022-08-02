@@ -126,19 +126,7 @@ const mealReducer = (state, action) => {
     return state
 }
 
-const displayMenuState = {
-    mode: true
-}
 
-const displyMenuReducer = (state, action) => {
-    if (action.type === 'TOGGLE_DISPLAY_MENU') {
-        return {
-            ...state,
-            mode: !state.mode
-        }
-    }
-    return state
-}
 
 
 export const ContextProvider = (props) => {
@@ -152,7 +140,7 @@ export const ContextProvider = (props) => {
     const [meals, mealDispatch] = useReducer(mealReducer, mealState)
 
     // dispaly menu 
-    const [displayMenuToggle, displayMenuDispatch] = useReducer(displyMenuReducer, displayMenuState)
+
 
 
     const [cartState, dispatchCartAction] = useReducer(cartReducer, cartDefaultState)
@@ -217,11 +205,7 @@ export const ContextProvider = (props) => {
 
     }
 
-    const displyMenuHandler = () => {
-        displayMenuDispatch({
-            type: 'TOGGLE_DISPLAY_MENU'
-        })
-    }
+
 
 
     useEffect(() => {
@@ -249,8 +233,7 @@ export const ContextProvider = (props) => {
                 removeItemHandler: removeItemHandler,
                 cartState: cartState,
                 items: cartState.items,
-                displyMenuHandler: displyMenuHandler,
-                displayMenuToggle: displayMenuToggle.mode
+
             }}
         >
             {props.children}

@@ -4,13 +4,16 @@ import AddItem from '../Cart/AddItem'
 import { CartContext } from '../../Store/CartContext'
 import Modal from '../UI/Modal'
 import MealDetails from './MealDetails'
-import { Transition } from 'react-transition-group'
+
+import { motion } from 'framer-motion'
 
 
 
 const MealItem = (props) => {
 
     const CartCtx = useContext(CartContext)
+
+    const mode = CartCtx.displayMenuToggle
 
     const addItem = amount => {
         //   console.log(amount)
@@ -32,43 +35,34 @@ const MealItem = (props) => {
     }
 
     return (
-        <Transition in={true} timeout={1000} >
-            {state => {
 
-                return (
-                    <li className="col-11 col-sm-6 col-md-4 mb-3" key={props.id}
-                        style={{
-                            ...transitionStyle[state],
-                            transition: `opacity 1s ease-in-out`
-                        }}
+        <motion.div layout className="col-11 col-sm-6 col-md-3 mb-3" key={props.id} >
+
+            <MenuCard
+                onClick={() => CartCtx.showMealDetailHandler(props.id)}
+                name={props.name}
+                image={props.image}
+                alt="beef"
+                price={props.price}
+            />
+            <div>
+                <AddItem addItem={addItem} />
+            </div>
+
+            {/* dish DEtail */}
+            {
+                CartCtx.showMealDetail ?
+                    <Modal
+                        onClose={CartCtx.hideMealDetailsHandler}
                     >
-                        <h5>{state}</h5>
-                        <MenuCard
-                            onClick={() => CartCtx.showMealDetailHandler(props.id)}
-                            name={props.name}
-                            image={props.image}
-                            alt="beef"
-                            price={props.price}
-                        />
-                        <div>
-                            <AddItem addItem={addItem} />
-                        </div>
+                        <MealDetails />
+                    </Modal>
+                    : null
+            }
+        </motion.div>
 
-                        {/* dish DEtail */}
-                        {
-                            CartCtx.showMealDetail ?
-                                <Modal
-                                    onClose={CartCtx.hideMealDetailsHandler}
-                                >
-                                    <MealDetails />
-                                </Modal>
-                                : null
-                        }
-                    </li>
-                )
-            }}
 
-        </Transition>
+
     )
 }
 

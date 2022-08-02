@@ -1,17 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import classes from './MealTypeSelect.module.css'
-import { CartContext } from '../../Store/CartContext'
+
 
 
 const MealTypeSelect = (props) => {
 
-    const ctx = useContext(CartContext)
-
-    const changeDisplayMenu = ctx.displyMenuHandler
-
-    const mode = ctx.displayMenuToggle
-
-    console.log(mode)
 
     // console.log(mode)
 
@@ -27,7 +20,7 @@ const MealTypeSelect = (props) => {
     const onClickHandler = (label) => {
         //setMode(!mode)
         props.filter(label)
-        changeDisplayMenu()
+
     }
 
 
